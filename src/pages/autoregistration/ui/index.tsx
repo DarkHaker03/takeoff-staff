@@ -3,13 +3,14 @@ import useInput from 'shared/hooks/useInput';
 import styles from './styles.module.scss';
 
 const AutoRegistration: FC = () => {
-  const [name, setName] = useInput();
-
+  const [login, setLogin] = useInput();
+  const [password, setPassword] = useInput();
   return (
     <div className={styles.page}>
       <h2>AutoRegistration</h2>
-      <input type="text" value={name} onChange={setName} className={styles.input} />
-      <input type="text" className={styles.input} />
+      <input value={password} onChange={setPassword} className={styles.input} />
+      <input value={login} onChange={setLogin} className={styles.input} />
+      <button type="submit">sign in</button>
     </div>
   );
 };
