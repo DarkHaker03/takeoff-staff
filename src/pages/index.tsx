@@ -6,12 +6,10 @@ import { Contacts } from './contacts';
 const Pages: FC = () => {
   console.log('delete this console.log');
   return (
-    <div>
-      <Routes>
-        <Route path="/autoregistration" element={<AutoRegistration />} />
-        <Route path="/contacts" element={<Contacts />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/autoregistration" element={<AutoRegistration />} />
+      <Route path="/contacts" element={<Contacts />} />
+    </Routes>
   );
 };
 

@@ -9,22 +9,22 @@ const PopupAddContact: FC = observer(() => {
   return (
     <div className={styles.popup}>
       <div className={styles.header}>
-        <div onClick={() => ContactsModel.PopupAddContact.toggle()}>
+        <div style={{ cursor: 'pointer' }} onClick={() => ContactsModel.PopupAddContact.toggle()}>
           <img src={img} alt="img" className={styles.img} />
-          <span>
-            Add
-          </span>
         </div>
       </div>
       <div className={styles.main}>
-        <div>
+        <div className={styles.block}>
           <div>Name</div>
           <input type="text" />
         </div>
-        <div>
+        <div className={styles.block}>
           <div>Number</div>
           <input type="text" />
         </div>
+        <button type="button" className={styles.add}>
+          Add
+        </button>
       </div>
     </div>
   );

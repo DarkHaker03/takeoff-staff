@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ContactsModel } from 'pages/contacts';
 import { observer } from 'mobx-react-lite';
-import Add from 'shared/components/add';
+import Add from 'shared/ui/add';
 import ZeroList from '../zeroList';
 import styles from './styles.module.scss';
 import ContactsList from '../contactsList';
