@@ -5,10 +5,14 @@ import Add from 'shared/ui/add';
 import ZeroList from '../zeroList';
 import styles from './styles.module.scss';
 import ContactsList from '../contactsList';
-import PopupAddContact from '../popupAddContact';
+import PopupContact from '../popupContact';
 
 const Main: FC = observer(() => {
-  console.log(3);
+  const handleClick = () => {
+    const { changeMode, toggle } = ContactsModel.Popup;
+    changeMode('add');
+    toggle();
+  };
   return (
     <main className={styles.main}>
       {
@@ -16,8 +20,8 @@ const Main: FC = observer(() => {
           ? <ZeroList />
           : <ContactsList />
       }
-      <Add onClick={() => ContactsModel.PopupAddContact.toggle()} />
-      {ContactsModel.PopupAddContact.state && <PopupAddContact />}
+      <Add onClick={handleClick} />
+      {ContactsModel.Popup.state && <PopupContact />}
     </main>
   );
 });

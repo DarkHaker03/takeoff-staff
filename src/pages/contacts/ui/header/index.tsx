@@ -1,12 +1,28 @@
+import { observer } from 'mobx-react-lite';
+import { ContactsModel } from 'pages/contacts';
 import { FC } from 'react';
 import img from 'shared/assets/img/search.svg';
+import Cross from 'shared/ui/cross';
 import styles from './styles.module.scss';
 
-const Header: FC = () => (
+const Header: FC = observer(() => (
   <header className={styles.header}>
-    <span> Contacts </span>
-    <img src={img} alt="" />
+    {ContactsModel.Seach.state
+      ? (
+        <>
+          <input type="text" value={ContactsModel.Contacts.searchText} onChange={ContactsModel.Contacts.changeSearchText} placeholder="Search..." />
+          <Cross onClick={ContactsModel.Seach.toggle} />
+        </>
+      )
+      : (
+        <>
+          <span> Contacts </span>
+          <div onClick={ContactsModel.Seach.toggle}>
+            <img src={img} alt="" />
+          </div>
+        </>
+      )}
   </header>
-);
+));
 
 export default Header;
