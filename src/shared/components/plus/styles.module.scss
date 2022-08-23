@@ -1,0 +1,14 @@
+.plus {
+	display: flex;
+	span {
+		background-color: #fff;
+		height: 2px;
+		width: 16px;
+	}
+	span:first-child {
+		transform: rotate(90deg) translate(0, -8px);
+	}
+	span:last-child {
+		transform: translateX(-8px);
+	}
+}
