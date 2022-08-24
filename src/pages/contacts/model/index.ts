@@ -98,20 +98,6 @@ class PopupClass {
 
 const Popup = new PopupClass();
 
-class SeacrhClass {
-  state = false;
-
-  constructor() {
-    makeAutoObservable(this);
-  }
-
-  toggle = () => {
-    this.state = !this.state;
-  };
-}
-
-const Seach = new SeacrhClass();
-
 const stringHandler = (x: string) => x.toLowerCase().replace(/ /g, '');
 function matchingLetters(titleOfItem: string, valueOfSearch: string) {
   return stringHandler(titleOfItem).startsWith(stringHandler(valueOfSearch));
@@ -120,5 +106,4 @@ function matchingLetters(titleOfItem: string, valueOfSearch: string) {
 export {
   Contacts,
   Popup,
-  Seach,
 };
