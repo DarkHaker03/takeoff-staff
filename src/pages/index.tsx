@@ -1,13 +1,25 @@
-import { FC } from 'react';
-import { Route, Routes } from 'react-router';
-import { AutoRegistration } from './autoregistration';
+import { observer } from 'mobx-react-lite';
+import { FC, useEffect } from 'react';
+import {
+  Route, Routes, useLocation, useNavigate,
+} from 'react-router';
+import { AutoRegistration, AutoregistrationModel } from './autoregistration';
 import { Contacts } from './contacts';
 
-const Pages: FC = () => (
-  <Routes>
-    <Route path="/autoregistration" element={<AutoRegistration />} />
-    <Route path="/contacts" element={<Contacts />} />
-  </Routes>
-);
+const Pages: FC = observer(() => {
+  const currentPath = useLocation().pathname;
+  const navigate = useNavigate();
+  const { confirm } = AutoregistrationModel.AutoRegistration;
+  useEffect(() => {
+    if (currentPath === '/autoregistration') return;
+    if (!confirm) navigate('/autoregistration');
+  }, [currentPath]);
+  return (
+    <Routes>
+      <Route path="/autoregistration" element={<AutoRegistration />} />
+      <Route path="/contacts" element={<Contacts />} />
+    </Routes>
+  );
+});
 
 export default Pages;

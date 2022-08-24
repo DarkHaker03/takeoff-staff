@@ -21,6 +21,7 @@
     ],
     "rules": {
         // "arrow-body-style": "off",
+        "no-use-before-define": "off",
         "no-undef": "off",
         "max-classes-per-file": "off",
         "no-unused-expressions": "off",

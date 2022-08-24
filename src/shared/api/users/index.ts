@@ -5,10 +5,10 @@ type UsersKeys = {
 };
 
 const USERS: UsersKeys[] = [
-  { id: 1, login: 'medvedev', password: '1' },
-  { id: 2, login: 'darker', password: '2' },
-  { id: 3, login: 'markerov', password: '3' },
-  { id: 4, login: 'chernov', password: '4' },
+  { id: 4, login: 'medvedev', password: '421' },
+  { id: 3, login: 'darker', password: '32' },
+  { id: 2, login: 'markerov', password: '23' },
+  { id: 1, login: 'chernov', password: '12' },
 ];
 
 export { USERS };

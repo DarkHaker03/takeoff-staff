@@ -9,6 +9,7 @@
 	flex-direction: column;
 }
 .main {
+	display: flex;
 	padding: 0 15px;
 }
 .header {
@@ -25,22 +26,7 @@
 	height: 15px;
 	cursor: pointer;
 }
-.btn {
-	width: 177px;
-	min-height: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #fff;
-	border: solid 1px #000;
-	cursor: pointer;
-	color: #000;
-	margin-top: 10px;
-}
-.add:hover {
-	background-color: #000;
-	color: #fff;
-}
+
 .block {
 	margin-top: 10px;
 }

@@ -1,26 +1,9 @@
-import { makeAutoObservable } from 'mobx';
-import { CONTACTS } from 'shared/api/contacts';
-import { USERS } from 'shared/api/users';
-
-const stringHandler = (x: string) => x.toLowerCase().replace(/ /g, '');
-function matchingLetters(titleOfItem: string, valueOfSearch: string) {
-  return stringHandler(titleOfItem).startsWith(stringHandler(valueOfSearch));
-}
-
-class UsersClass {
-  state = USERS;
-
-  constructor() {
-    makeAutoObservable(this);
-  }
-
-  get length() {
-    return this.state.length;
-  }
-}
+import { makeAutoObservable, reaction } from 'mobx';
+import { AutoregistrationModel } from 'pages/autoregistration';
+import { ContactKeys, ContactsOfUser } from 'shared/api/contacts';
 
 class ContactsClass {
-  state = CONTACTS;
+  state: ContactKeys[] = [];
 
   searchText = '';
 
@@ -35,7 +18,7 @@ class ContactsClass {
       alert('number must not have less than 12 digits');
       return false;
     }
-    this.state = [{ id: this.state.length + 1, name, number }, ...this.state];
+    this.state = [{ id: (this.state[0]?.id ?? 0) + 1, name, number }, ...this.state];
     return true;
   };
 
@@ -84,6 +67,15 @@ class ContactsClass {
   }
 }
 
+const Contacts = new ContactsClass();
+
+reaction(
+  () => AutoregistrationModel.AutoRegistration.selectedUserId,
+  (id) => {
+    Contacts.state = ContactsOfUser(id);
+  },
+);
+
 type PopupMode = 'add' | 'redactAndDelete';
 
 class PopupClass {
@@ -104,6 +96,8 @@ class PopupClass {
   };
 }
 
+const Popup = new PopupClass();
+
 class SeacrhClass {
   state = false;
 
@@ -116,14 +110,15 @@ class SeacrhClass {
   };
 }
 
-const Users = new UsersClass();
-const Contacts = new ContactsClass();
-const Popup = new PopupClass();
 const Seach = new SeacrhClass();
+
+const stringHandler = (x: string) => x.toLowerCase().replace(/ /g, '');
+function matchingLetters(titleOfItem: string, valueOfSearch: string) {
+  return stringHandler(titleOfItem).startsWith(stringHandler(valueOfSearch));
+}
 
 export {
   Contacts,
-  Users,
   Popup,
   Seach,
 };

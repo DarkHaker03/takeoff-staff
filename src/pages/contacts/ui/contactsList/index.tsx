@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { ContactsModel } from 'pages/contacts';
 import { observer } from 'mobx-react-lite';
+import styles from './styles.module.scss';
 
 const ContactsList: FC = observer(() => {
   const handleClick = (id: number) => {
@@ -13,9 +14,9 @@ const ContactsList: FC = observer(() => {
   return (
     <div>
       {ContactsModel.Contacts.filter.map((contact) => (
-        <div onClick={() => handleClick(contact.id)} key={contact.id}>
-          <div>{contact.name}</div>
-          <div>{contact.number}</div>
+        <div className={styles.item} onClick={() => handleClick(contact.id)} key={contact.id}>
+          <div className={styles.name}>{contact.name}</div>
+          <div className={styles.number}>{contact.number}</div>
         </div>
       ))}
     </div>

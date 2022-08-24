@@ -10,14 +10,14 @@ const Header: FC = observer(() => (
     {ContactsModel.Seach.state
       ? (
         <>
-          <input type="text" value={ContactsModel.Contacts.searchText} onChange={ContactsModel.Contacts.changeSearchText} placeholder="Search..." />
+          <input className={styles.input} type="text" value={ContactsModel.Contacts.searchText} onChange={ContactsModel.Contacts.changeSearchText} placeholder="Search..." />
           <Cross onClick={ContactsModel.Seach.toggle} />
         </>
       )
       : (
         <>
           <span> Contacts </span>
-          <div onClick={ContactsModel.Seach.toggle}>
+          <div onClick={ContactsModel.Seach.toggle} className={styles.searchIcon}>
             <img src={img} alt="" />
           </div>
         </>

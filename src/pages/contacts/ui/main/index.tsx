@@ -16,7 +16,7 @@ const Main: FC = observer(() => {
   return (
     <main className={styles.main}>
       {
-        ContactsModel.Users.length === 0
+        ContactsModel.Contacts.length === 0
           ? <ZeroList />
           : <ContactsList />
       }

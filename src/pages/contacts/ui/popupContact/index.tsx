@@ -41,30 +41,32 @@ const PopupContact: FC = observer(() => {
         </div>
       </div>
       <div className={styles.main}>
-        <div className={styles.block}>
-          <div>Name</div>
-          <input value={name} onChange={setName} type="text" />
-        </div>
-        <div className={styles.block}>
-          <div>Number</div>
-          <input value={number} onChange={setNumber} type="text" />
-        </div>
-        {ContactsModel.Popup.mode === 'add'
-          ? (
-            <button onClick={addContact} type="button" className={styles.btn}>
-              Add
-            </button>
-          )
-          : (
-            <>
-              <button onClick={redactContact} type="button" className={styles.btn}>
-                Redact
+        <div>
+          <div className={styles.block}>
+            <div>Name</div>
+            <input value={name} onChange={setName} type="text" />
+          </div>
+          <div className={styles.block}>
+            <div>Number</div>
+            <input value={number} onChange={setNumber} type="text" />
+          </div>
+          {ContactsModel.Popup.mode === 'add'
+            ? (
+              <button onClick={addContact} type="button" className="btn">
+                Add
               </button>
-              <button onClick={deleteContact} type="button" className={styles.btn}>
-                Delete
-              </button>
-            </>
-          )}
+            )
+            : (
+              <>
+                <button onClick={redactContact} type="button" className="btn">
+                  Redact
+                </button>
+                <button onClick={deleteContact} type="button" className="btn">
+                  Delete
+                </button>
+              </>
+            )}
+        </div>
       </div>
     </div>
   );
