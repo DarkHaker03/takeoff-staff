@@ -8,9 +8,12 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
+
+const BASE_NAME = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_GITHUB_URL : '';
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={BASE_NAME}>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
