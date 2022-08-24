@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/takeoff-staff/static/css/main.60c92869.css",
+    "main.js": "/takeoff-staff/static/js/main.998e9bec.js",
+    "static/js/787.ec704a7a.chunk.js": "/takeoff-staff/static/js/787.ec704a7a.chunk.js",
+    "static/media/box.svg": "/takeoff-staff/static/media/box.fb54e302dad9fa725f137dfe0807d24a.svg",
+    "static/media/search.svg": "/takeoff-staff/static/media/search.fcf53821eb77deabf0ad879df5aaf6a0.svg",
+    "static/media/arrowLeft.svg": "/takeoff-staff/static/media/arrowLeft.669d38320397474f5c2c4fa0e5246933.svg",
+    "index.html": "/takeoff-staff/index.html",
+    "main.60c92869.css.map": "/takeoff-staff/static/css/main.60c92869.css.map",
+    "main.998e9bec.js.map": "/takeoff-staff/static/js/main.998e9bec.js.map",
+    "787.ec704a7a.chunk.js.map": "/takeoff-staff/static/js/787.ec704a7a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.60c92869.css",
+    "static/js/main.998e9bec.js"
+  ]
+}
