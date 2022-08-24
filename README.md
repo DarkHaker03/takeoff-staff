@@ -1,6 +1,9 @@
 Запуск приложения: npm start
 Версия node: 14.16.1
 
+логин и пароль можно посмотреть тут src/shared/api/users
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
