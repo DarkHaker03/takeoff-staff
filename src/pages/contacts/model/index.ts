@@ -3,41 +3,35 @@ import { AutoregistrationModel } from 'pages/autoregistration';
 import { ContactKeys, ContactsOfUser } from 'shared/api/contacts';
 
 class ContactsClass {
-  state: ContactKeys[] = [];
+  private state: ContactKeys[] = [];
 
-  searchText = '';
+  private searchText = '';
 
-  selectedItemId: number = 0;
+  private selectedItemId: number = 0;
 
   constructor() {
     makeAutoObservable(this);
   }
 
   add = (name: string, number: string) => {
-    if (number.length < 12) {
-      alert('number must not have less than 12 digits');
-      return false;
-    }
-    this.state = [{ id: (this.state[0]?.id ?? 0) + 1, name, number }, ...this.state];
+    if (checkNumberAndAlert(number.length)) return false;
+    this.setState([{ id: (this.state[0]?.id ?? 0) + 1, name, number }, ...this.state]);
     return true;
   };
 
   del = () => {
-    this.state = this.state.filter((item) => item.id !== this.selectedItemId);
+    this.setState(this.state.filter((item) => item.id !== this.selectedItemId));
   };
 
   redact = (name: string, number: string) => {
-    if (number.length < 12) {
-      alert('number must not have less than 12 digits');
-      return false;
-    }
+    if (checkNumberAndAlert(number.length)) return false;
     const newState = this.state.map((contact) => {
       if (contact.id === this.selectedItemId) {
         return { id: contact.id, name, number };
       }
       return contact;
     });
-    this.state = newState;
+    this.setState(newState);
     return true;
   };
 
@@ -47,6 +41,10 @@ class ContactsClass {
 
   setSelectemItemId = (id: number) => {
     this.selectedItemId = id;
+  };
+
+  setState = (newState: ContactKeys[]) => {
+    this.state = newState;
   };
 
   get selectedItem() {
@@ -65,6 +63,14 @@ class ContactsClass {
   get length() {
     return this.state.length;
   }
+
+  get getSearchText() {
+    return this.searchText;
+  }
+
+  get getState() {
+    return this.state;
+  }
 }
 
 const Contacts = new ContactsClass();
@@ -72,7 +78,7 @@ const Contacts = new ContactsClass();
 reaction(
   () => AutoregistrationModel.AutoRegistration.selectedUserId,
   (id) => {
-    Contacts.state = ContactsOfUser(id);
+    Contacts.setState(ContactsOfUser(id));
   },
 );
 
@@ -102,7 +108,13 @@ const stringHandler = (x: string) => x.toLowerCase().replace(/ /g, '');
 function matchingLetters(titleOfItem: string, valueOfSearch: string) {
   return stringHandler(titleOfItem).startsWith(stringHandler(valueOfSearch));
 }
-
+function checkNumberAndAlert(numberLength: number) {
+  if (numberLength < 12) {
+    alert('number must not have less than 12 digits');
+    return true;
+  }
+  return false;
+}
 export {
   Contacts,
   Popup,

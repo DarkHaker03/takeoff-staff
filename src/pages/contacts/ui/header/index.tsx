@@ -15,7 +15,7 @@ const Header: FC = observer(() => {
       {isSeacrh
         ? (
           <>
-            <input className={styles.input} type="text" value={ContactsModel.Contacts.searchText} onChange={ContactsModel.Contacts.changeSearchText} placeholder="Search..." />
+            <input className={styles.input} type="text" value={ContactsModel.Contacts.getSearchText} onChange={ContactsModel.Contacts.changeSearchText} placeholder="Search..." />
             <Cross onClick={toggle} />
           </>
         )
